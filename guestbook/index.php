@@ -26,7 +26,8 @@
 		require("config.php");
 
 		//确定当前页数参数
-		$p = $_GET['p']?$_GET['p']:1;
+		@$p = $_GET['p']?$_GET['p']:1;
+
 		//数据指针
 		$offset = ($p-1)*$pagesize;
 
@@ -38,7 +39,7 @@
 		}
 
 		//循环输出
-		while ($gb_array = mysqli_fetch_array($result) {
+		while ($gb_array = mysqli_fetch_array($result)) {
 			$content = nl2br($gb_array['CONTENT']);
 			echo $gb_array['NICKNAME'],'&nbsp;';
 			echo '发表于：'.date('Y-m-d H:i',$gb_array['CREATETIME']).'<br/>';
@@ -55,7 +56,7 @@
 		//计算留言页数
 		$count_result = $conn -> query("SELECT COUNT(*) AS COUNT FROM GUESTBOOK");
 		$count_array = mysqli_fetch_array($count_result);
-		$pagenum = ceil($count_result["COUNT"]/$pagesize);
+		$pagenum = ceil(mysqli_fetch_array($count_result)/$pagesize);
 		echo '共 '.$count_array['COUNT'].' 条留言';
 		if ($pagenum > 1) {
 			for ($i=1; $i < $pagenum; $i++) { 
