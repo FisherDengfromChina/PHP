@@ -1,13 +1,13 @@
 <?php
 	session_start();
-	echo $_SESSION['username'];
-	/*
-	if (!isset($_SESSION[['username']])) {
-		//header("Location: http://".$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['PHP_SELF']), '/\\')."/login.php");
-		header("Location: http://www.baidu.com");
+	//echo $_SESSION['username'];
+
+	if (!isset($_SESSION['username'])) {
+		header("Location: http://".$_SERVER['HTTP_HOST'].rtrim(dirname($_SERVER['PHP_SELF']), '/\\')."/login.php");
+		//header("Location: http://www.baidu.com");
 		exit;
 	}
-	*/
+
 
 	require("conn.php");
 	if($_POST){
